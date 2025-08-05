@@ -17,13 +17,13 @@ public:
         if (!users_.count(id) || GetUsers() == 1) {
             std::cout << (users_.count(id) ? "1" : "0") << std::endl;
         } else {
-            int my_page = users_[id];
+            const int my_page = users_[id];
             int less = 0;
             for (auto it = page_count_.begin(); it != page_count_.end() && it->first < my_page; ++it) {
                 less += it->second;
             }
-            int others = users_.size() - 1;
-            double result = static_cast<double>(less) / others;
+            const int others = users_.size() - 1;
+            const double result = static_cast<double>(less) / others;
             std::cout << std::setprecision(6) << result << std::endl;
         }
     }
@@ -32,7 +32,7 @@ private:
     std::map<int, int> users_;
     std::map<int, int> page_count_;
 
-    int GetUsers() {
+    int GetUsers() const {
         return users_.size();
     }
 };
